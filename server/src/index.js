@@ -35,6 +35,20 @@ async function getAllFoodTrucks() {
 
 // 4. getFoodTrucksByPrice(price)
 
+//helper function to get food by price level - ranging from 1-5 as a scale with error handling to make sure user returns value between 1-5
+
+async function getFoodTrucksByPrice(price) {
+  if (price < 1 || price > 5) {
+    throw new Error("Price level must be between 1 and 5");
+  }
+  const result = await db.query(
+    "SELECT * FROM food_trucks WHERE price_level = $1",
+    [price],
+  );
+  return result.rows;
+}
+
+
 // 5. getTopRatedFoodTrucks()
 
 // 6. getFoodTrucksSortedByRating()
@@ -92,7 +106,18 @@ app.get("/get-all-food-trucks", async (req, res) => {
 
 // 3. GET /get-vegan-food-trucks - Shirley
 
-// 4. GET /get-food-trucks-by-price/:price - Seth
+// 4. GET /get-food-trucks-by-price/:price - Hailey
+
+// api endpoint to get food trucks by price level with error handling for invalid price levels
+app.get("/get-food-trucks-by-price/:price", async (req, res) => {
+  const price = parseInt(req.params.price);
+  try {
+    const trucks = await getFoodTrucksByPrice(price);
+    res.json(trucks);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
 
 // 5. GET /get-top-rated-food-trucks - Morgan
 
