@@ -15,7 +15,7 @@
 | 5      | Arianne   | GET    | `/get-top-rated-food-trucks`        | Retrieves food trucks with rating 4.5 or higher.            |
 | 6      | Morgan   | GET    | `/get-food-trucks-sorted-by-rating` | Retrieves food trucks sorted by rating (highest first).     |
 | 7      | Ysabel   | GET    | `/get-food-trucks-sorted-by-price`  | Retrieves food trucks sorted by price level (lowest first). |
-| 8      | Meribel   | GET    | `/get-food-trucks-count`            | Retrieves the total number of food trucks in the database.  |
+| 8      | Zesty   | GET    | `/get-food-trucks-count`            | Retrieves the total number of food trucks in the database.  |
 | 9      | Shirley       | POST   | `/add-one-food-truck`               | Adds a new food truck to the database.                      |
 | 10     | Seth   | POST   | `/delete-one-food-truck/:id`        | Deletes one food truck by its id number.                    |
 | 11     | Student   | POST   | `/update-food-truck-location`       | Updates the location of a food truck.                       |
