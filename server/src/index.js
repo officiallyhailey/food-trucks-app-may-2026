@@ -48,25 +48,23 @@ async function getVeganFoodTrucks() {
 
 // 4. getFoodTrucksByPrice(price)
 
-//helper function to get food by price level - ranging from 1-5 as a scale with error handling to make sure user returns value between 1-5
-
+// helper function to get trucks by price_level, a 1-5 scale (like $ to $$$$$)
 async function getFoodTrucksByPrice(price) {
 
-  // this line checks if the price level is less than 1 or greater than 5. If it is, an error is thrown with a message indicating that the price level must be between 1 and 5. This ensures that the function only processes valid price levels.
-
+  // guard clause: reject bad input before it ever reaches the database
   if (price < 1 || price > 5) {
-
-    // this line returns an error if the number is not between 1 and 5 
-
+    // "throw" stops the function and passes this Error up to whoever called it
     throw new Error("Price level must be between 1 and 5");
   }
 
-  // this line runs the sql query to return the trucks with the right price levels 
-
-  const result = await db.query( 
+  // "$1" is a placeholder - this is a parameterized query
+  const result = await db.query(
     "SELECT * FROM food_trucks WHERE price_level = $1",
-    [price], // the price is outside of the direct query line for security purposes 
+    // real value passed separately so pg can safely escape it (prevents SQL injection)
+    [price],
   );
+
+  // ".rows" is just the array of matching truck records from the result
   return result.rows;
 }
 
