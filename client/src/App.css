@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 1rem;
   margin: 0;
   padding: 0;
@@ -66,8 +66,22 @@ form label {
 form input,
 form select {
   height: 2rem;
-  padding: 0.4rem;
+  padding: 0.4rem 0.8rem;
   font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+
+}
+
+/* fix arrow spacing in selector to be further from the edge*/
+form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23666666'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1rem;
+  padding-right: 2.2rem;
 }
 
 /* Submit button */
@@ -75,4 +89,284 @@ form button {
   height: 2.4rem;
   font-size: 1rem;
   cursor: pointer;
+  border-radius: 20px;
+  border: none;
+}
+
+form button:hover {
+  background-color: rgb(177, 45, 30);
+  color: white;     
+}
+
+/* Home page header */
+
+.pageHeader {
+  padding: 2.5rem 1.5rem 2rem;
+}
+
+.pageHeader .titles h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.pageHeader .titles h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgb(90, 60, 60);
+  margin: 0 0 1.75rem;
+}
+
+.pageHeader .titles h2 .count {
+  font-weight: 700;
+  color: rgb(177, 45, 30);
+  display: inline-block;
+  min-width: 1.5ch;
+}
+
+.controlsRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.searchBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchBar .searchIcon {
+  position: absolute;
+  left: 0.85rem;
+  color: rgb(150, 110, 110);
+  pointer-events: none;
+}
+
+.searchBar input {
+  height: 2.75rem;
+  min-width: 260px;
+  padding: 0 1rem 0 2.5rem;
+  border: 1px solid rgb(225, 200, 200);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: white;
+  transition:
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.searchBar input:focus {
+  outline: none;
+  border-color: rgb(177, 45, 30);
+  box-shadow: 0 0 0 3px rgba(177, 45, 30, 0.12);
+}
+
+.sortDropdown select {
+  height: 2.75rem;
+  padding: 0 2.2rem 0 1rem;
+  border: 1px solid rgb(225, 200, 200);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23666666'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1rem;
+}
+
+.sortDropdown select:focus {
+  outline: none;
+  border-color: rgb(177, 45, 30);
+  box-shadow: 0 0 0 3px rgba(177, 45, 30, 0.12);
+}
+
+/* Truck card grid */
+
+.truckGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem 1.5rem;
+  padding: 1rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.truckCard {
+  position: relative;
+  overflow: visible;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem 2.5rem;
+  text-align: left;
+  box-shadow: 0 4px 16px rgba(80, 30, 30, 0.08);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.truckCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(80, 30, 30, 0.14);
+}
+
+.truckDetails h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* All the DetailRows share these column widths so labels/values line up
+   across every row instead of each row sizing its own columns. */
+.truckFields {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 0.75rem;
+  row-gap: 0.5rem;
+  align-items: baseline;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.dataLabel {
+  color: rgb(150, 110, 110);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dataResponse {
+  color: rgb(40, 25, 25);
+  text-align: right;
+}
+
+/* Top Rated badge - overflows the card's top-right corner on purpose */
+.topRatedBadge {
+  position: absolute;
+  top: -14px;
+  right: -10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: rgb(255, 196, 0);
+  color: rgb(60, 40, 0);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  box-shadow: 0 3px 8px rgba(150, 100, 0, 0.35);
+  transform: rotate(4deg);
+}
+
+/* Pins the delete icon + confirm message together in the bottom-left corner */
+.deleteWrapper {
+  position: absolute;
+  bottom: -16px;
+  left: -16px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.deleteBtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  color: rgb(177, 45, 30);
+  box-shadow: 0 3px 10px rgba(80, 30, 30, 0.2);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.deleteBtn:hover {
+  background-color: rgb(177, 45, 30);
+  color: white;
+  transform: scale(1.08);
+}
+
+.deleteBtn.confirming {
+  background-color: rgb(177, 45, 30);
+  color: white;
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+.confirmMessage {
+  background-color: rgb(177, 45, 30);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(80, 30, 30, 0.2);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(177, 45, 30, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(177, 45, 30, 0);
+  }
+}
+
+/* Responsive: tablet - drops to 2 columns before 3 gets cramped */
+
+@media (max-width: 900px) {
+  .truckGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: mobile */
+
+@media (max-width: 700px) {
+  .truckGrid {
+    grid-template-columns: 1fr;
+    padding: 0.5rem 1rem 3rem;
+    gap: 2rem;
+  }
+
+  /* Matches the grid's side padding so search/sort lines up with the cards */
+  .pageHeader {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .controlsRow {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .searchBar,
+  .sortDropdown {
+    width: 100%;
+  }
+
+  .searchBar input {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .sortDropdown select {
+    width: 100%;
+  }
 }

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../App.css";
 
-function Form() {
-  const [formData, setFormData] = useState({
+
+const initialFormData = {
     name: "",
     currentLocation: "",
     dailySpecial: "",
@@ -10,7 +10,10 @@ function Form() {
     hasVeganOptions: false,
     priceLevel: 1,
     rating: 0,
-  });
+  };
+
+function Form() {
+  const [formData, setFormData] = useState(initialFormData);
 
   // Send form data to the API to add a new food truck
   async function writeFoodTruckData() {
@@ -44,9 +47,10 @@ function Form() {
   };
 
   // handle when the user submits the form
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    writeFoodTruckData();
+  const handleSubmit = async (e) => { 
+    e.preventDefault(); // prevent default page reload after form submission
+    await writeFoodTruckData(); // waits until post request actually finishes
+    setFormData(initialFormData); // reset the form after submission
     alert("Thanks for submitting a new food truck!");
   };
 

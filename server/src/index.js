@@ -14,7 +14,7 @@ const db = new pg.Pool({
 const app = express();
 app.use(express.json());
 
-const port = 3000;
+const port = 3001;
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
@@ -51,12 +51,21 @@ async function getVeganFoodTrucks() {
 //helper function to get food by price level - ranging from 1-5 as a scale with error handling to make sure user returns value between 1-5
 
 async function getFoodTrucksByPrice(price) {
+
+  // this line checks if the price level is less than 1 or greater than 5. If it is, an error is thrown with a message indicating that the price level must be between 1 and 5. This ensures that the function only processes valid price levels.
+
   if (price < 1 || price > 5) {
+
+    // this line returns an error if the number is not between 1 and 5 
+
     throw new Error("Price level must be between 1 and 5");
   }
-  const result = await db.query(
+
+  // this line runs the sql query to return the trucks with the right price levels 
+
+  const result = await db.query( 
     "SELECT * FROM food_trucks WHERE price_level = $1",
-    [price],
+    [price], // the price is outside of the direct query line for security purposes 
   );
   return result.rows;
 }
@@ -117,8 +126,8 @@ async function addOneFoodTruck(
 ) {
   const result = await db.query(
     `INSERT INTO food_trucks
-     (name, current_location, daily_special, slogan, has_vegan_options, price_level, rating)
-     VALUES ($1, $2, $3, $4, $5, $6, $7)
+    (name, current_location, daily_special, slogan, has_vegan_options, price_level, rating)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
      RETURNING *`,
     [
       name,
@@ -159,7 +168,7 @@ async function updateFoodTruckRating(id, newRating) {
     WHERE id = $1
     RETURNING *`,
     [id, newRating]
-);
+  );
   return result.rows[0];
 }
 // ---------------------------------
@@ -188,7 +197,37 @@ app.get("/get-food-truck-by-id/:id", async (req, res) => {
 
 // 4. GET /get-food-trucks-by-price/:price - Hailey
 
-// 4. GET /get-food-trucks-by-price/:price - ?
+app.get("/get-food-trucks-by-price/:price", async (req, res) => { 
+  
+  // app.get("/...) this is the endpoint for the GET request to retrieve food trucks by price level. The ":price" in the URL indicates that this is a route parameter, which will be extracted from the request and used in the function.
+
+//async, (req, res) => { ... }) is an asynchronous function that takes in the request and response objects as parameters. This function will handle the logic for retrieving food trucks based on the price level specified in the route parameter.
+
+  const { price } = req.params; // This line extracts the price parameter from the request's route parameters. The value of price will be used to query the database for food trucks that match the specified price level.
+
+  try { 
+
+// The try block is used to handle any potential errors that may occur during the execution of the code inside it. If an error occurs, the control will be passed to the catch block.
+
+    const foodTrucks = await getFoodTrucksByPrice(price); 
+    
+    // This line calls the getFoodTrucksByPrice function, passing in the extracted price parameter. The function queries the database for food trucks that match the specified price level and returns the results. The await keyword is used to wait for the asynchronous operation to complete before proceeding.
+   
+    res.json(foodTrucks);
+  
+    // This line sends the retrieved food truck data as a JSON response to the client. If the operation is successful, the client will receive a JSON array of food trucks that match the specified price level.
+  
+  } catch (error) { 
+    
+    // The catch block is executed if an error occurs in the try block. It captures the error and allows you to handle it gracefully.
+   
+    res.status(400).json({ error: error.message });
+
+    // This line sends an error response to the client with a status code of 400 (Bad Request) and includes the error message in the JSON response. This informs the client that there was an issue with their request, such as an invalid price level.
+
+  }
+});
+
 
 // 6. GET /get-food-trucks-sorted-by-rating -  Morgan
 // GET endpoint to retrieve all food trucks sorted by their rating
@@ -244,10 +283,12 @@ app.post("/delete-one-food-truck/:id", async (req, res) => {
   const id = req.params.id;
 
   await deleteOneFoodTruck(id);
+  res.send(`Success! Food truck ${id} was deleted.`);
+});
 
 // 12. POST /update-food-truck-rating - BONUS! - ZESTY
 app.post("/update-food-truck-rating", async (req, res) => {
-  const {id, rating} = req.body;
+  const { id, rating } = req.body;
   const truck = await updateFoodTruckRating(id, rating);
-   res.send(`Success! ${truck.name}'s rating was updated to ${truck.rating}.`);
+  res.send(`Success! ${truck.name}'s rating was updated to ${truck.rating}.`);
 });

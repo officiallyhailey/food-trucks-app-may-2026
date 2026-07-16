@@ -1,10 +1,10 @@
 # Let's make the API for a Food Trucks App together! 🚛
 
-We will work as a team of developers to create the API for a Food Trucks App. 
+We will work as a team of developers to create the API for a Food Trucks App.
 
-Each developer will code and test their assigned API endpoint & helper function. 
+Each developer will code and test their assigned API endpoint & helper function.
 
-Check out the `api-documentation.md` file for the assigned tasks. 
+Check out the `api-documentation.md` file for the assigned tasks.
 
 ## **Learning Goals**
 
@@ -40,16 +40,17 @@ By doing this activity together, we will practice...
    - Go to your Github repo's page on GitHub. Click on the green “Code” button and copy the repo's URL
 
      ![image](https://github.com/user-attachments/assets/fd6fcf7f-9246-42da-80be-0c4d75c3f48a)
+
    - Open the Terminal
    - `cd` to into your `dev` folder, which is where you want to clone the repo
    - Type `git clone YOUR_REPO_URL` , replacing `YOUR_REPO_URL` with your Github repo link that you copied
    - Press Enter to run the command. Now you’ve cloned your Github repo! 🎉
-  
+
 ---
 
-### 🛠️ 2. Project Setup: Adding the `config.js` file`node_modules` folder 
+### 🛠️ 2. Project Setup: Adding the `config.js` file`node_modules` folder
 
-1. **Create the `config.js` file** 
+1. **Create the `config.js` file**
 
    In the `server/src` folder, create a `config.js` file. Your instructor will provide you with code that you will copy and paste into this file, which will contain the access credentials to the Food Trucks database that's already hosted on Neon.
 
@@ -83,7 +84,7 @@ By doing this activity together, we will practice...
 3. Make sure you’ve switched to your new branch on VS Code
    - In the bottom left corner of VS Code, you should see the name of your new branch “new-feature”. This indicates that you have switched to your new branch on VS Code.
    - If it says “main” instead of “new-feature”, that means you are currently on the main branch. Click on the branch name to switch the branch you’re on in VS Code.
-   - From now on, you should always check which branch you’re in before you write any code — you don’t want to accidentally write code in the wrong branch! Generally, you only write code in a feature branch or a develop branch, never in the main branch.
+   - From now on, you should always check which branch you’re in before you write any code - you don’t want to accidentally write code in the wrong branch! Generally, you only write code in a feature branch or a develop branch, never in the main branch.
 
 ---
 
@@ -121,8 +122,9 @@ By doing this activity together, we will practice...
 3.  **Merge the Specified Branch into the Current branch**
 
           git merge new-feature --no-edit
-    
+
     If this command takes you to a strange window in the Terminal where you can't type anything, don't panic! This is called Vim, a text editor that lives on the command line. You can exit back to the normal command line by typing `:wq`.
+
 4.  **Push the Merged Changes to the Remote Repository**
 
     After a successful merge, push the updated `main` branch to GitHub:

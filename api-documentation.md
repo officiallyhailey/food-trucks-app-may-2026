@@ -6,20 +6,20 @@
 
 ## Overview
 
-| Number | Assignee  | Method | Endpoint                            | Description                                                 |
-| ------ | --------- | ------ | ----------------------------------- | ----------------------------------------------------------- |
-| 1      | None      | GET    | `/get-all-food-trucks`              | Retrieves all food trucks from the database.                |
-| 2      | Carlotta   | GET    | `/get-food-truck-by-id/:id`         | Retrieves one food truck by its id number.                  |
-| 3      | Jana   | GET    | `/get-vegan-food-trucks`            | Retrieves all food trucks that offer vegan options.         |
+| Number | Assignee | Method | Endpoint                            | Description                                                 |
+| ------ | -------- | ------ | ----------------------------------- | ----------------------------------------------------------- |
+| 1      | None     | GET    | `/get-all-food-trucks`              | Retrieves all food trucks from the database.                |
+| 2      | Carlotta | GET    | `/get-food-truck-by-id/:id`         | Retrieves one food truck by its id number.                  |
+| 3      | Jana     | GET    | `/get-vegan-food-trucks`            | Retrieves all food trucks that offer vegan options.         |
 | 4      | Hailey   | GET    | `/get-food-trucks-by-price/:price`  | Retrieves food trucks that match a specific price level.    |
-| 5      | Arianne   | GET    | `/get-top-rated-food-trucks`        | Retrieves food trucks with rating 4.5 or higher.            |
+| 5      | Arianne  | GET    | `/get-top-rated-food-trucks`        | Retrieves food trucks with rating 4.5 or higher.            |
 | 6      | Morgan   | GET    | `/get-food-trucks-sorted-by-rating` | Retrieves food trucks sorted by rating (highest first).     |
 | 7      | Ysabel   | GET    | `/get-food-trucks-sorted-by-price`  | Retrieves food trucks sorted by price level (lowest first). |
-| 8      | Zesty   | GET    | `/get-food-trucks-count`            | Retrieves the total number of food trucks in the database.  |
-| 9      | Shirley       | POST   | `/add-one-food-truck`               | Adds a new food truck to the database.                      |
-| 10     | Seth   | POST   | `/delete-one-food-truck/:id`        | Deletes one food truck by its id number.                    |
-| 11     | Student   | POST   | `/update-food-truck-location`       | Updates the location of a food truck.                       |
-| 12     | Student   | POST   | `/update-food-truck-rating`         | Updates the rating of a food truck.                         |
+| 8      | Zesty    | GET    | `/get-food-trucks-count`            | Retrieves the total number of food trucks in the database.  |
+| 9      | Shirley  | POST   | `/add-one-food-truck`               | Adds a new food truck to the database.                      |
+| 10     | Seth     | POST   | `/delete-one-food-truck/:id`        | Deletes one food truck by its id number.                    |
+| 11     | Student  | POST   | `/update-food-truck-location`       | Updates the location of a food truck.                       |
+| 12     | Student  | POST   | `/update-food-truck-rating`         | Updates the rating of a food truck.                         |
 
 ---
 
@@ -46,16 +46,16 @@ These defaults make the database more beginner-friendly. If a request does not i
 
 ```sql
 INSERT INTO food_trucks (name, current_location, daily_special, slogan, has_vegan_options, price_level, rating) VALUES
-('Bert''s Beets', 'Farmer''s Market, Oak & 3rd', 'The Crimson Devastator — beet soup served inside of hollowed out beets', 'You WILL taste the earth.', true, 2, 4.3),
-('Nacho Average Nacho', 'Parked outside the DMV on Elm St', 'The Existential Crisis — 4lbs of nachos with toppings you didn''t ask for but probably needed', 'You''ve been waiting two hours. You deserve this.', false, 3, 4.6),
-('Wrapscallion', 'Business Park Lot C', 'The LinkedIn Wrap — grilled chicken, unsolicited advice, and a side of ''circling back''', 'Disrupting the wrap vertical since 2019.', true, 2, 3.9),
-('Pita Party', 'Outside the gym on Maple Ave', 'The Plus One — stuffed pita with roasted veggies, tzatziki, and a second pita nobody invited but everyone was glad showed up', 'Everyone''s welcome. Especially carbs.', true, 2, 4.5),
-('Grill Murray', 'Film festival grounds, West Pavilion', 'The Groundhog Day Special — same burger as yesterday. And the day before.', 'No one will ever believe you ate here.', false, 3, 3.8),
-('Cluck Norris', 'Corner of Pain Ave and Delicious Blvd', 'The Roundhouse — a chicken sandwich so spicy it has its own criminal record', 'Heat so intense, it has a black belt.', false, 4, 3.7),
-('Roll With It', 'Convention Center food court annex', 'The Commitment — a sushi burrito the size of a forearm that requires both hands and a life decision', 'You said you weren''t that hungry. We don''t believe you.', true, 4, 4.8),
-('Fry Hard: With a Vengeance', 'Stadium parking lot, Gate 4', 'The Yippee-Ki-Fry — loaded waffle fries with pulled pork and ''I can''t believe this is legal'' sauce', 'Welcome to the fry, pal.', false, 3, 4.2),
-('The Meltdown', 'Corner of Main & 5th, next to the pigeons', 'The Structural Failure — a grilled cheese so loaded with toppings it collapses before it reaches your mouth, served with soup for the aftermath', 'It will fall apart. That''s the point.', true, 2, 4.4),
-('Batter Up', 'Downtown Arts District, Vine & 2nd', 'The Grand Slam — a savory waffle stacked with fried chicken, hot honey, and pickles, served with a tiny baseball helmet full of mac and cheese', 'Step up to the plate. We''re ready.', false, 3, 4.6);
+('Bert''s Beets', 'Farmer''s Market, Oak & 3rd', 'The Crimson Devastator - beet soup served inside of hollowed out beets', 'You WILL taste the earth.', true, 2, 4.3),
+('Nacho Average Nacho', 'Parked outside the DMV on Elm St', 'The Existential Crisis - 4lbs of nachos with toppings you didn''t ask for but probably needed', 'You''ve been waiting two hours. You deserve this.', false, 3, 4.6),
+('Wrapscallion', 'Business Park Lot C', 'The LinkedIn Wrap - grilled chicken, unsolicited advice, and a side of ''circling back''', 'Disrupting the wrap vertical since 2019.', true, 2, 3.9),
+('Pita Party', 'Outside the gym on Maple Ave', 'The Plus One - stuffed pita with roasted veggies, tzatziki, and a second pita nobody invited but everyone was glad showed up', 'Everyone''s welcome. Especially carbs.', true, 2, 4.5),
+('Grill Murray', 'Film festival grounds, West Pavilion', 'The Groundhog Day Special - same burger as yesterday. And the day before.', 'No one will ever believe you ate here.', false, 3, 3.8),
+('Cluck Norris', 'Corner of Pain Ave and Delicious Blvd', 'The Roundhouse - a chicken sandwich so spicy it has its own criminal record', 'Heat so intense, it has a black belt.', false, 4, 3.7),
+('Roll With It', 'Convention Center food court annex', 'The Commitment - a sushi burrito the size of a forearm that requires both hands and a life decision', 'You said you weren''t that hungry. We don''t believe you.', true, 4, 4.8),
+('Fry Hard: With a Vengeance', 'Stadium parking lot, Gate 4', 'The Yippee-Ki-Fry - loaded waffle fries with pulled pork and ''I can''t believe this is legal'' sauce', 'Welcome to the fry, pal.', false, 3, 4.2),
+('The Meltdown', 'Corner of Main & 5th, next to the pigeons', 'The Structural Failure - a grilled cheese so loaded with toppings it collapses before it reaches your mouth, served with soup for the aftermath', 'It will fall apart. That''s the point.', true, 2, 4.4),
+('Batter Up', 'Downtown Arts District, Vine & 2nd', 'The Grand Slam - a savory waffle stacked with fried chicken, hot honey, and pickles, served with a tiny baseball helmet full of mac and cheese', 'Step up to the plate. We''re ready.', false, 3, 4.6);
 ```
 
 ---
@@ -79,7 +79,7 @@ INSERT INTO food_trucks (name, current_location, daily_special, slogan, has_vega
     "id": 1,
     "name": "Bert's Beets",
     "current_location": "Farmer's Market, Oak & 3rd",
-    "daily_special": "The Crimson Devastator — beet soup served inside of hollowed out beets",
+    "daily_special": "The Crimson Devastator - beet soup served inside of hollowed out beets",
     "slogan": "You WILL taste the earth.",
     "has_vegan_options": true,
     "price_level": 2,
@@ -104,7 +104,7 @@ INSERT INTO food_trucks (name, current_location, daily_special, slogan, has_vega
   "id": 3,
   "name": "Wrapscallion",
   "current_location": "Business Park Lot C",
-  "daily_special": "The LinkedIn Wrap — grilled chicken, unsolicited advice, and a side of 'circling back'",
+  "daily_special": "The LinkedIn Wrap - grilled chicken, unsolicited advice, and a side of 'circling back'",
   "slogan": "Disrupting the wrap vertical since 2019.",
   "has_vegan_options": true,
   "price_level": 2,
